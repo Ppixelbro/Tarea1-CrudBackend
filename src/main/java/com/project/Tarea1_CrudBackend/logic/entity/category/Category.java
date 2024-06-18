@@ -1,6 +1,6 @@
 package com.project.Tarea1_CrudBackend.logic.entity.category;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.Tarea1_CrudBackend.logic.entity.product.Product;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,10 +25,6 @@ public class Category {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Date updatedAt;
-
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<Product> products;
 
     // Constructors, getters, and setters
     public Category() {}
@@ -68,13 +64,5 @@ public class Category {
 
     public Date getUpdatedAt() {
         return updatedAt;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 }

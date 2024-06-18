@@ -1,6 +1,7 @@
 package com.project.Tarea1_CrudBackend.logic.entity.product;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.Tarea1_CrudBackend.logic.entity.category.Category;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,7 +30,6 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    @JsonBackReference
     private Category category;
 
     // Constructors, getters, and setters
