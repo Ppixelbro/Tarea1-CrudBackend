@@ -26,11 +26,12 @@ public class UserRestController {
         return UserRepository.findAll();
     }
 
-//    @PostMapping
-//    public User addUser(@RequestBody User user) {
-//        user.setPassword(passwordEncoder.encode(user.getPassword()));
-//        return UserRepository.save(user);
-//    }
+    @PostMapping
+    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    public User addUser(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return UserRepository.save(user);
+    }
 
     @GetMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
